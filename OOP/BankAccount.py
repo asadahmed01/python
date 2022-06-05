@@ -2,6 +2,8 @@ from cmath import acos
 
 
 class BankAccount:
+    bankfees = 0.95
+
     def __init__(self, accountNumber: int, name: str, balance: float):
         self.accountNumber = accountNumber
         self.name = name
@@ -16,6 +18,9 @@ class BankAccount:
             print("insufficient funds! your balance is $", self.balance)
         elif self.balance >= amount:
             self.balance -= amount
+
+    def bankfees(self):
+        self.balance = self.balance * self.bankfees
 
 
 accnt = BankAccount(1122, "john", 100.00)

@@ -14,6 +14,3 @@ class Employee:
 
 
 emp1 = Employee("Asad", "Ahmed", 65000)
-emp1.apply_raise()
-print(emp1.fullname())
-print(emp1.pay)

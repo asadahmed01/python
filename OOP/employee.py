@@ -11,6 +11,3 @@ class Employee:
 
     def apply_raise(self):
         self.pay = float(self.pay * self.raise_amount)
-
-
-emp1 = Employee("Asad", "Ahmed", 65000)

@@ -8,9 +8,3 @@ class Developer(Employee):
     def __init__(self, first, last, pay, languages):
         super().__init__(first, last, pay)
         self.languages = languages
-
-
-dev = Developer("steve", "Mark", 90000, "python")
-print(dev.languages)
-dev.apply_raise()
-print(dev.pay)

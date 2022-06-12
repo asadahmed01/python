@@ -16,26 +16,36 @@ class LinkedList:
         self.head = None
 
     # insertion method
-    def insert(self, data):
+    def insert_at_end(self, data):
         node = Node(data)
         if self.head is None:
             self.head = node
         else:
             current = self.head
+            # traverse to the last node
             while current.next:
                 current = current.next
+            # when you find the last node, point it to the new node
             current.next = node
+
+    def insert_at_begining(self, data):
+        # create new node
+        node = Node(data)
+        node.next = self.head
+        self.head = node
 
     def printLL(self):
         current = self.head
         while current:
             print(current.data)
+
             current = current.next
 
 
 # linkedlist with singl node
 ll = LinkedList()  # head pointing to empty list (Null)
-ll.insert(0)
-ll.insert(1)
-ll.insert(2)
+ll.insert_at_end(1)
+ll.insert_at_end(2)
+ll.insert_at_end(3)
+ll.insert_at_begining(0)
 ll.printLL()

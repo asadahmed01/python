@@ -25,5 +25,5 @@ def towSum_optimized(nums, target):
 
 # nums = [3, 2, 4]
 target = 9
-two_sum(nums, target)
+# two_sum(nums, target)
 print(towSum_optimized(nums, 9))

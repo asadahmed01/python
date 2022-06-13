@@ -43,6 +43,24 @@ class LinkedList:
         node.next = prev_node.next
         prev_node.next = node
 
+    def delete_node(self, data):
+        # if the node being deleted is the head
+        current = self.head
+        # if the node is the head
+        if current and current.data == data:
+            self.head = current.next
+            current = None
+        # if the node being delete is not the head
+        prev = None
+        while current and current.data != data:
+            prev = current
+            current = current.next
+        # if current is None, we reached the end of the list
+        if current is None:
+            return
+        prev.next = current.next
+        current = None
+
     def printLL(self):
         current = self.head
         while current:
@@ -58,4 +76,5 @@ ll.insert_at_end(2)
 ll.insert_at_end(3)
 ll.insert_at_begining(0)
 ll.insert_at_middle(ll.head.next.next, 7)
+ll.delete_node(1)
 ll.printLL()

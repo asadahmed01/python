@@ -34,6 +34,15 @@ class LinkedList:
         node.next = self.head
         self.head = node
 
+    def insert_at_middle(self, prev_node, data):
+        if not prev_node:
+            print(f"{prev_node} is not in the list")
+            return
+        # create the new node
+        node = Node(data)
+        node.next = prev_node.next
+        prev_node.next = node
+
     def printLL(self):
         current = self.head
         while current:
@@ -48,4 +57,5 @@ ll.insert_at_end(1)
 ll.insert_at_end(2)
 ll.insert_at_end(3)
 ll.insert_at_begining(0)
+ll.insert_at_middle(ll.head.next.next, 7)
 ll.printLL()

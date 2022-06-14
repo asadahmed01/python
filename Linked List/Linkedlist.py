@@ -81,6 +81,13 @@ class LinkedList:
 
             current = current.next
 
+    def swap_nodes(self, b, c):
+        b = self.head.next
+        c = b.next
+        self.head.next = c
+        b.next = c.next
+        c.next = b
+
 
 # linkedlist with singl node
 ll = LinkedList()  # head pointing to empty list (Null)
@@ -93,5 +100,6 @@ ll.insert_at_end("D")
 # ll.delete_node("B")
 ll.printLL()
 print("--------------")
-ll.reverse()
+# ll.reverse()
+ll.swap_nodes("B", "C")
 ll.printLL()

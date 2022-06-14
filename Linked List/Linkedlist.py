@@ -1,4 +1,7 @@
 # A single node of a singly linked list
+from locale import currency
+
+
 class Node:
     def __init__(self, data, next=None):
         self.data = data
@@ -61,6 +64,16 @@ class LinkedList:
         prev.next = current.next
         current = None
 
+    def reverse(self):
+        current = self.head
+        prev = None
+        while current is not None:
+            next = current.next
+            current.next = prev
+            prev = current
+            current = next
+        self.head = prev
+
     def printLL(self):
         current = self.head
         while current:
@@ -71,10 +84,14 @@ class LinkedList:
 
 # linkedlist with singl node
 ll = LinkedList()  # head pointing to empty list (Null)
-ll.insert_at_end(1)
-ll.insert_at_end(2)
-ll.insert_at_end(3)
-ll.insert_at_begining(0)
-ll.insert_at_middle(ll.head.next.next, 7)
-ll.delete_node(1)
+ll.insert_at_end("A")
+ll.insert_at_end("B")
+ll.insert_at_end("C")
+ll.insert_at_end("D")
+# ll.insert_at_begining(0)
+# ll.insert_at_middle(ll.head.next, "X")
+# ll.delete_node("B")
+ll.printLL()
+print("--------------")
+ll.reverse()
 ll.printLL()

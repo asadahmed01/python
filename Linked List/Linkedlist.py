@@ -1,6 +1,8 @@
 # A single node of a singly linked list
 from locale import currency
 
+from pkg_resources import parse_version
+
 
 class Node:
     def __init__(self, data, next=None):
@@ -81,12 +83,42 @@ class LinkedList:
 
             current = current.next
 
-    def swap_nodes(self, b, c):
-        b = self.head.next
-        c = b.next
-        self.head.next = c
-        b.next = c.next
-        c.next = b
+    def swap_nodes(self, n1, n2):
+        node1 = self.head
+        node2 = self.head
+        prevNode1 = None
+        prevNode2 = None
+        # check if the list is empty
+        if self.head == None:
+            return
+        # check if n1 and n2 are the same
+        if n1 == n2:
+            return
+        # search for node1
+        while node1 and node1.data != n1:
+            prevNode1 = node1
+            node1 = node1.next
+        # search for node2
+        while node2 and node2.data != n2:
+            prevNode2 = node2
+            node2 = node2.next
+        # if either node1 or node2 doesnt exist
+        if not node1 or not node2:
+            return
+        # if node1 is not head
+        if prevNode1 != None:
+            prevNode1.next = node2
+        # if node1 is head, make node2 the head now
+        else:
+            self.head = node2
+        if prevNode2 != None:
+            prevNode2.next = node1
+        else:
+            self.head = node1
+        # make the swap now:
+        temp = node1.next
+        node1.next = node2.next
+        node2.next = temp
 
 
 # linkedlist with singl node
@@ -101,5 +133,5 @@ ll.insert_at_end("D")
 ll.printLL()
 print("--------------")
 # ll.reverse()
-ll.swap_nodes("B", "C")
+ll.swap_nodes("A", "D")
 ll.printLL()

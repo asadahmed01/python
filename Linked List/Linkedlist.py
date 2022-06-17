@@ -141,8 +141,8 @@ class LinkedList:
         self.head = dummy.next
 
     def removeNode(self, val):
-        dummy = Node(0, self.head)
-        prev = dummy
+        dummy = self.head
+        prev = self.head
         curr = self.head
 
         while curr:
@@ -152,7 +152,7 @@ class LinkedList:
             else:
                 prev = curr
             curr = nxt
-        self.head = dummy.next
+        self.head = dummy
 
 
 # linkedlist with singl node

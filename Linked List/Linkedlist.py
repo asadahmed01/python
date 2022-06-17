@@ -95,11 +95,11 @@ class LinkedList:
         if n1 == n2:
             return
         # search for node1
-        while node1 and node1.data != n1:
+        while node1 is not None and node1.data != n1:
             prevNode1 = node1
             node1 = node1.next
         # search for node2
-        while node2 and node2.data != n2:
+        while node2 is not None and node2.data != n2:
             prevNode2 = node2
             node2 = node2.next
         # if either node1 or node2 doesnt exist
@@ -120,6 +120,26 @@ class LinkedList:
         node1.next = node2.next
         node2.next = temp
 
+    def swapPairs(self):
+        dummy = Node(0, self.head)
+        prev = dummy
+        current = self.head
+
+        while current and current.next:
+            # save next pair to be swapped
+            nxtPair = current.next.next
+            second = current.next
+            # reverse the current pair
+            second.next = current
+            current.next = nxtPair
+            prev.next = second
+
+            # update the ptrs
+            prev = current
+            current = nxtPair
+
+        self.head = dummy.next
+
 
 # linkedlist with singl node
 ll = LinkedList()  # head pointing to empty list (Null)
@@ -130,8 +150,9 @@ ll.insert_at_end("D")
 # ll.insert_at_begining(0)
 # ll.insert_at_middle(ll.head.next, "X")
 # ll.delete_node("B")
-ll.printLL()
-print("--------------")
+# ll.printLL()
+# print("--------------")
 # ll.reverse()
-ll.swap_nodes("A", "D")
+# ll.swap_nodes("A", "D")
+ll.swapPairs()
 ll.printLL()

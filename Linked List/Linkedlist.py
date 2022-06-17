@@ -140,6 +140,20 @@ class LinkedList:
 
         self.head = dummy.next
 
+    def removeNode(self, val):
+        dummy = Node(0, self.head)
+        prev = dummy
+        curr = self.head
+
+        while curr:
+            nxt = curr.next
+            if curr.data == val:
+                prev.next = nxt
+            else:
+                prev = curr
+            curr = nxt
+        self.head = dummy.next
+
 
 # linkedlist with singl node
 ll = LinkedList()  # head pointing to empty list (Null)
@@ -156,5 +170,5 @@ ll.insert_at_end("D")
 # ll.reverse()
 # ll.swap_nodes("A", "D")
 # ll.swapPairs()
-ll.delete_node("D")
+ll.removeNode("D")
 ll.printLL()

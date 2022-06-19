@@ -170,8 +170,7 @@ class LinkedList:
             right = right.next
             left = left.next
         # now delete the nth node from the end
-        print(f"left--> {left.data}")
-        print(f"right {right}")
+
         left.next = left.next.next
         self.head = dummy.next
 

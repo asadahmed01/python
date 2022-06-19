@@ -154,6 +154,27 @@ class LinkedList:
             curr = nxt
         self.head = dummy
 
+    def remove_nth_node(self, n):
+        dummy = Node(0, self.head)
+        left = dummy
+        right = self.head
+
+        # start moving the right ptr n nodes from the left ptr
+        while n > 0 and right:
+            print(n)
+            right = right.next
+            n -= 1
+        # Now start moving both ptrs by one node
+
+        while right:
+            right = right.next
+            left = left.next
+        # now delete the nth node from the end
+        print(f"left--> {left.data}")
+        print(f"right {right}")
+        left.next = left.next.next
+        self.head = dummy.next
+
 
 # linkedlist with singl node
 ll = LinkedList()  # head pointing to empty list (Null)
@@ -161,14 +182,16 @@ ll.insert_at_end("A")
 ll.insert_at_end("B")
 ll.insert_at_end("C")
 ll.insert_at_end("D")
-ll.insert_at_end("D")
+ll.insert_at_end("E")
+
 # ll.insert_at_begining(0)
 # ll.insert_at_middle(ll.head.next, "X")
 # ll.delete_node("B")
-# ll.printLL()
-# print("--------------")
+ll.printLL()
+print("--------------")
 # ll.reverse()
 # ll.swap_nodes("A", "D")
 # ll.swapPairs()
-ll.removeNode("D")
+# ll.removeNode("D")
+ll.remove_nth_node(2)
 ll.printLL()

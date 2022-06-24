@@ -57,13 +57,39 @@ class MycircularQueue:
             curr = curr.next
 
 
-cq = MycircularQueue(4)
-cq.enQueue(1)
-cq.enQueue(2)
-cq.enQueue(3)
-cq.enQueue(4)
-cq.deQueue()
-cq.deQueue()
-cq.deQueue()
-cq.deQueue()
-cq.display()
+""" ARRAY METHOD"""
+# implement circular queue using array method
+class Circular:
+    def __init__(self, k: int):
+        self.head = 0
+        self.tail = 0
+        self.size = 0
+        self.k = k
+        self.q = [None] * k
+
+    def enQueue(self, val: int) -> bool:
+        if self.isFull():
+            return False
+        self.q[self.tail] = val
+        self.tail = (self.tail + 1) % self.k
+        self.size += 1
+        return True
+
+    def deQueue(self) -> bool:
+        if self.isEmpty():
+            return False
+        self.size -= 1
+        self.head = (self.head + 1) % self.k
+        return True
+
+    def Front(self) -> int:
+        pass
+
+    def Rear(self) -> int:
+        pass
+
+    def isEmpty(self) -> bool:
+        return self.size == 0
+
+    def isFull(self) -> bool:
+        return self.size == self.k

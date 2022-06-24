@@ -174,14 +174,27 @@ class LinkedList:
         left.next = left.next.next
         self.head = dummy.next
 
+    def removeDuplicate(self):
+        left = self.head
+        right = self.head.next
+        while right:
+            tmp = right.next
+            if left.data == right.data:
+                left.next = tmp
+                right = tmp
+            else:
+                left = left.next
+                right = right.next
+        return self.head
+
 
 # linkedlist with singl node
 ll = LinkedList()  # head pointing to empty list (Null)
-ll.insert_at_end("A")
-ll.insert_at_end("B")
-ll.insert_at_end("C")
-ll.insert_at_end("D")
-ll.insert_at_end("E")
+ll.insert_at_end(1)
+ll.insert_at_end(2)
+ll.insert_at_end(3)
+ll.insert_at_end(3)
+# ll.insert_at_end("E")
 
 # ll.insert_at_begining(0)
 # ll.insert_at_middle(ll.head.next, "X")
@@ -192,5 +205,6 @@ print("--------------")
 # ll.swap_nodes("A", "D")
 # ll.swapPairs()
 # ll.removeNode("D")
-ll.remove_nth_node(2)
+# ll.remove_nth_node(2)
+ll.removeDuplicate()
 ll.printLL()

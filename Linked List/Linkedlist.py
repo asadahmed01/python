@@ -1,5 +1,7 @@
 # A single node of a singly linked list
+from hashlib import new
 from locale import currency
+from operator import le
 
 from pkg_resources import parse_version
 
@@ -186,6 +188,27 @@ class LinkedList:
                 left = left.next
                 right = right.next
         return self.head
+
+    def rotateList(self, k):
+        if not self.head:
+            return
+        # find the length of the list
+        length = 1
+        tail = self.head
+        curr = self.head
+        while tail.next:
+            tail = tail.next
+            length += 1
+        # aggregate the length
+        k = k % length
+        # get to the point where we need to do the rotation
+
+        for i in range(length - k - 1):
+            curr = curr.next
+        newHead = curr.next
+        curr.next = None
+        tail.next = self.head
+        return newHead
 
 
 # linkedlist with singl node

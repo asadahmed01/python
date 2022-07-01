@@ -10,14 +10,14 @@ def isPerfectSquare(num) -> bool:
     start = 1
     end = num
     while start <= end:
-        mid = start + end // 2
+        mid = (start + end) // 2
         if mid * mid == num:
             return True
         if mid * mid < num:
-            end = mid - 1
-        if mid * mid > num:
             start = mid + 1
+        if mid * mid > num:
+            end = mid - 1
     return False
 
 
-print(isPerfectSquare(9))
+print(isPerfectSquare(3))

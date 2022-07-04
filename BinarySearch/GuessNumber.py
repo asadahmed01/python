@@ -1,6 +1,3 @@
-from unicodedata import mirrored
-
-
 def guessNumber(n: int) -> int:
     left = 0
     right = n

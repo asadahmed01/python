@@ -12,8 +12,18 @@ def search2D(matrix: list[list[int]], target) -> bool:
             row = r
             break
     # now do binary search on that row
+    l = 0
+    r = len(matrix[row]) - 1
+    while l <= r:
+        m = (l + r) // 2
+        if m < target:
+            l = m + 1
+        elif m > target:
+            r = m - 1
+        else:
+            return True
 
 
 matrix = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
 
-search2D(matrix, 3)
+print(search2D(matrix, 33))
